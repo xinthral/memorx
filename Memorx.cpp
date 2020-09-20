@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
 using namespace std;
 
 /*	Jesse Hassell
@@ -199,7 +200,7 @@ void Memorx::buildBoardHidden() {
 	}
 	boardHidden = hboard;
 	boardShadow = sboard;
-}   
+}
 void Memorx::buildPlayerList() {
 	Player p;
 	for (int i = 0; i < numberOfPlayers; i++) {
@@ -211,7 +212,7 @@ void Memorx::buildPlayerList() {
 		playersList.push_back(p);
 	}
 }
- 
+
 void Memorx::incrementCurrentPlayer() {
 	if (currentPlayer + 1 < numberOfPlayers)
 		currentPlayer++;
@@ -292,7 +293,7 @@ ostream& operator << (ostream& out, Memorx& game) {
 	for (it = game.playersList.begin(); it != game.playersList.end(); ++it) {
 		out << "[ " << it->symbol() << " ] Name: " << it->name() << " Score: " << it->score() << endl;
 		out << "[ " << it->symbol() << " ] Guesses: " << it->guesses() << " - Accuracy: " << (it->accuracy() == 1 ? 100 : it->accuracy()) << "%" << endl;
-	}	
+	}
 	return out;
 }
 void Memorx::takeTurn() {
