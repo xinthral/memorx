@@ -6,12 +6,9 @@
 #include <limits>
 using namespace std;
 
-/*	Jesse Hassell
-	April 13, 2018
-	Purpose: MemorX is a Memory game clone
-	ToDo:  What ideas have I had that I haven't written in yet?
-		- Comment Code Better
-		- Tranfser class methods down to definitions section
+/*	@Author	: Xinthral
+	@Date	: April 13, 2018
+	Purpose	: MemorX is a Memory game clone
 */
 
 class Player {
