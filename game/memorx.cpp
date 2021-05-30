@@ -9,8 +9,8 @@ progress as a developer, this isn't my best or fanciest work; just
 a snapshot of where my skills are at.
 */
 
-// Memorx Constructors
-Memorx::Memorx() {
+// memorx Constructors
+memorx::memorx() {
 	srand((unsigned)time(0));
 	cout << "The game is afoot!" << endl;
 	inputBoard();
@@ -18,11 +18,11 @@ Memorx::Memorx() {
 	play();
 }
 
-// Memorx Accessors
-int Memorx::getBoardSize() {
+// memorx Accessors
+int memorx::getBoardSize() {
 	return boardSize;
 }
-void Memorx::getCoordinates(int input) {
+void memorx::getCoordinates(int input) {
 	for (int i = 0; i < boardSize; i++) {
 		for (int j = 0; j < boardSize; j++) {
 			if (boardHidden[i][j] == input) {
@@ -33,7 +33,7 @@ void Memorx::getCoordinates(int input) {
 		}
 	}
 }
-int Memorx::getUserGuess() {
+int memorx::getUserGuess() {
 	int input = -1;
 	bool valid = false;
 	do {
@@ -51,8 +51,8 @@ int Memorx::getUserGuess() {
 	return input;
 }
 
-// Memorx Mutators
-void Memorx::buildBoardKey() {
+// memorx Mutators
+void memorx::buildBoardKey() {
 
 	vector <int> values;
 	int sizer = (boardSize * boardSize / 2), fillCounter = 0;
@@ -80,7 +80,7 @@ void Memorx::buildBoardKey() {
 		boardKey.push_back(values);
 	}
 }
-void Memorx::buildBoardHidden() {
+void memorx::buildBoardHidden() {
 	vector <vector <int> > hboard;
 	vector <vector <string> > sboard;
 	int counter = 1;
@@ -98,7 +98,7 @@ void Memorx::buildBoardHidden() {
 	boardHidden = hboard;
 	boardShadow = sboard;
 }
-void Memorx::buildPlayerList() {
+void memorx::buildPlayerList() {
 	Player p;
 	for (int i = 0; i < numberOfPlayers; i++) {
 		cout << "[ " << i + 1 << " ] Enter Player Name: ";
@@ -110,27 +110,27 @@ void Memorx::buildPlayerList() {
 	}
 }
 
-void Memorx::incrementCurrentPlayer() {
+void memorx::incrementCurrentPlayer() {
 	if (currentPlayer + 1 < numberOfPlayers)
 		currentPlayer++;
 	else
 		currentPlayer = 0;
 }
-void Memorx::inputBoard() {
+void memorx::inputBoard() {
 	do {
 		cout << "What size board would you like? \nMust be an even number [2]: ";
 		cin >> boardSize;
 	} while (boardSize % 2 != 0);
 }
-void Memorx::inputPlayers() {
+void memorx::inputPlayers() {
 	do {
 		cout << "How many players? [1]: ";
 		cin >> numberOfPlayers;
 	} while (numberOfPlayers < 1);
 }
 
-// Memorx Methods
-void Memorx::displayBoard() {
+// memorx Methods
+void memorx::displayBoard() {
 	string numberAdjustment = " ";
 	system("CLS");
 
@@ -158,11 +158,11 @@ void Memorx::displayBoard() {
 		cout << endl;
 	}
 }
-void Memorx::displayCurrentPlayer() {
+void memorx::displayCurrentPlayer() {
 	cout << "Current Player: " << currentPlayer + 1 << endl;
 	cout << "Player " << playersList[currentPlayer].number() << " [ " << playersList[currentPlayer].symbol() << " ] " << playersList[currentPlayer].name() << endl;
 }
-void Memorx::displayKey() {
+void memorx::displayKey() {
 	int counter = 0;
 	for (int col = 0; col < boardSize; col++) {
 		for (int row = 0; row < boardSize; row++) {
@@ -172,20 +172,20 @@ void Memorx::displayKey() {
 		cout << endl;
 	}
 }
-void Memorx::displayPlayerInfo() {
+void memorx::displayPlayerInfo() {
 	vector <Player>::iterator it;
 	for (it = playersList.begin(); it != playersList.end(); ++it) {
 		cout << "Player " << it->number() << "  [ " << it->symbol() << " ]  " << it->name() << endl;
 	}
 }
-void Memorx::displayScoreBoard() {
+void memorx::displayScoreBoard() {
 	vector <Player>::iterator it;
 	for (it = playersList.begin(); it != playersList.end(); ++it) {
 		cout << "[ " << it->symbol() << " ] Name: " << it->name() << " Score: " << it->score() << endl;
 		cout << "[ " << it->symbol() << " ] Guesses: " << it->guesses() << " - Accuracy: " << (it->accuracy() == 1 ? 100 : it->accuracy()) << "%" << endl;
 	}
 }
-ostream& operator << (ostream& out, Memorx& game) {
+ostream& operator << (ostream& out, memorx& game) {
 	vector <Player>::iterator it;
 	for (it = game.playersList.begin(); it != game.playersList.end(); ++it) {
 		out << "[ " << it->symbol() << " ] Name: " << it->name() << " Score: " << it->score() << endl;
@@ -193,7 +193,7 @@ ostream& operator << (ostream& out, Memorx& game) {
 	}
 	return out;
 }
-void Memorx::takeTurn() {
+void memorx::takeTurn() {
 	int inputOne = -1, inputTwo = -1, guess = -1, coordOne[2], coordTwo[2];
 	bool repeat1 = true, repeat2 = true;
 
@@ -263,8 +263,8 @@ void Memorx::takeTurn() {
 	}
 }
 
-// Memorx Game On
-void Memorx::play() {
+// memorx Game On
+void memorx::play() {
 	int tempCount = 0;
 	buildPlayerList();
 	//cout << "Players List Build." << endl;
