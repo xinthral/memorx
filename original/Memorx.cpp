@@ -209,7 +209,6 @@ void Memorx::buildPlayerList() {
 		playersList.push_back(p);
 	}
 }
-
 void Memorx::incrementCurrentPlayer() {
 	if (currentPlayer + 1 < numberOfPlayers)
 		currentPlayer++;

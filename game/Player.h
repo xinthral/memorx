@@ -1,15 +1,20 @@
+#ifndef __PLAYER_H__
+#define __PLAYER_H__
+#include <string>
+using namespace std;
+
 class Player {
 private:
-
 	string playerName = "Player";
 	int playerNumber = 0;
 	int playerScore = 0;
 	int totalGuesses = 0;
 	string playerSymbol = "*";
 
+
 public:
 	// Constructors
-	//Player();
+	// void inputPlayers();
 
 	// Accessors
 	double accuracy() { return  ((playerScore * 1.0) / totalGuesses) * 100; }
@@ -22,11 +27,9 @@ public:
 	// Mutators
 	void incrementGuess() { totalGuesses++; }
 	void incrementScore() { playerScore++; }
-	// Deprecated Mutator
-	//void decrementScore() { if (playerScore > 0) playerScore--; }
-	void setSymbol(istream& in) { in >> playerSymbol; }
-
-	void setName(istream& in) { in >> playerName; }
+	void setSymbol(std::istream& in) { in >> playerSymbol; }
+	void setName(std::istream& in) { in >> playerName; }
 	void setNumber(int number) { playerNumber = number; }
-
 };
+
+#endif
